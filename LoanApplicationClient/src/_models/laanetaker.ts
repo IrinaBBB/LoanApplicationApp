@@ -1,5 +1,5 @@
 export interface Laanetaker {
-    fodselsnummer: number;
-    navn: String;
-    fodselsdato: Date;
+    fodselsnummer: number | null;
+    navn: String | null;
+    fodselsdato: Date | null;
 }

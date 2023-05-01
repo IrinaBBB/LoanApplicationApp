@@ -1,11 +1,11 @@
 import { Laanetaker } from './laanetaker';
 
 export interface Laanesoeknad {
-    id: number;
-    laanetakere: Laanetaker[];
-    laanebeloep: number;
-    behov: String;
-    loepetid: number;
-    avdragsfriPeriode: number;
-    type: String;
+    id: number | null;
+    laanetakere: Laanetaker[] | null;
+    laanebeloep: number | null;
+    behov: String | null;
+    loepetid: number | null;
+    avdragsfriPeriode: number | null;
+    type: String | null;
 }
