@@ -2,6 +2,7 @@ package com.irinabalkarova.loanapplicationapi.controller;
 
 import com.irinabalkarova.loanapplicationapi.dto.ResponseResult;
 import com.irinabalkarova.loanapplicationapi.model.Laanesoeknad;
+import com.irinabalkarova.loanapplicationapi.model.Status;
 import com.irinabalkarova.loanapplicationapi.service.LaanesoeknadService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,17 @@ public class LaanesoeknadController {
             return new ResponseEntity<>(new ResponseResult<>(null, laanesoeknad), HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<ResponseResult<Status>> get(@PathVariable long id){
+        try {
+            Status status = this.loanApplicationService.getStatusById(id);
+            return new ResponseEntity<>(new ResponseResult<>(null, status), HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            log.error(e.getMessage());
+            return new ResponseEntity<>(new ResponseResult<>(null, Status.ukjent), HttpStatus.BAD_REQUEST);
         }
     }
 }

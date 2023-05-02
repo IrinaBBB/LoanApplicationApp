@@ -39,7 +39,7 @@ export class LoanApplicationComponent {
             .postApplication(this.laanesoeknad)
             .subscribe((response) => {
                 console.log(response);
-                this.router.navigateByUrl('/status');
+                this.router.navigateByUrl('/status').then();
             });
     }
 }

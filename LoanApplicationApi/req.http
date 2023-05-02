@@ -21,3 +21,6 @@ content-type: application/json
   "avdragsfriPeriode": 12,
   "type": "annuitet"
 }
+
+### GET
+GET localhost:8095/v1/application/2

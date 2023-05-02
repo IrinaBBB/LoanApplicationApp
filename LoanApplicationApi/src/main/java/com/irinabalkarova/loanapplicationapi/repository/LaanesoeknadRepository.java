@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 @Repository
 @Slf4j
@@ -24,5 +25,10 @@ public class LaanesoeknadRepository {
         }
         this.laanesoeknader.put(NEXT_ID++, laanesoeknad);
         log.info("Loan Application has been saved with ID " + (NEXT_ID - 1));
+    }
+
+    public Optional<Laanesoeknad> findById(long id) {
+        Laanesoeknad laanesoeknad = laanesoeknader.get(id);
+        return Optional.ofNullable(laanesoeknad);
     }
 }

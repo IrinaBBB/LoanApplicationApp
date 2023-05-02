@@ -19,4 +19,12 @@ export class MainService {
                 return data;
             });
     }
+
+    getStatus(id: number): Observable<any> {
+        return this.http
+            .get<any>(`http://localhost:8095/v1/application/${id}`)
+            .pipe((data: any) => {
+                return data;
+            });
+    }
 }
