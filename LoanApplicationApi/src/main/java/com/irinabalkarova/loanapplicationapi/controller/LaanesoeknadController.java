@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.validation.Valid;
+
 @RestController
 @Log4j2
 @RequestMapping("/v1/application")
@@ -28,8 +30,8 @@ public class LaanesoeknadController {
 
     @PostMapping
     @ApiOperation(value = "Create a new loan application", response = ResponseEntity.class)
-    public ResponseEntity<ResponseResult<Laanesoeknad>> post(@RequestBody Laanesoeknad laanesoeknad){
-        log.info("Request from 4200");
+    public ResponseEntity<ResponseResult<Laanesoeknad>> post(@Valid @RequestBody Laanesoeknad laanesoeknad){
+        log.info("Request from 4200 to create a new loan application: \n" + laanesoeknad.toString());
         try {
             this.loanApplicationService.add(laanesoeknad);
             return new ResponseEntity<>(new ResponseResult<>(null, laanesoeknad), HttpStatus.OK);
