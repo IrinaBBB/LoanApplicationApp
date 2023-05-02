@@ -14,9 +14,7 @@ public class Laanetaker {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Laanetaker)) return false;
-
         Laanetaker that = (Laanetaker) o;
-
         return getFodselsnummer().equals(that.getFodselsnummer());
     }
 
