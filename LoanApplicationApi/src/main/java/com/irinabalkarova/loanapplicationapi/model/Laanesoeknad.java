@@ -1,20 +1,14 @@
 package com.irinabalkarova.loanapplicationapi.model;
 
 import lombok.Data;
-import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
-@Validated
 public class Laanesoeknad {
     private long id;
     private List<Laanetaker> lanetakere;
 
     private double lanebelop;
-
-    @NotNull
     private String behov;
     private int lopetid;
     private int avdragsfriPeriode;

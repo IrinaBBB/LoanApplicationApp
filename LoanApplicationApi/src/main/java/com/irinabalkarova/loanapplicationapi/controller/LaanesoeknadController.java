@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -30,7 +31,7 @@ public class LaanesoeknadController {
 
     @PostMapping
     @ApiOperation(value = "Create a new loan application", response = ResponseEntity.class)
-    public ResponseEntity<ResponseResult<Laanesoeknad>> post(@Valid @RequestBody Laanesoeknad laanesoeknad){
+    public ResponseEntity<ResponseResult<Laanesoeknad>> post(@RequestBody @Valid Laanesoeknad laanesoeknad){
         log.info("Request from 4200 to create a new loan application: \n" + laanesoeknad.toString());
         try {
             this.loanApplicationService.add(laanesoeknad);
