@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MainService } from '../../_services/main.service';
 import { Laanetaker } from '../../_models/laanetaker';
 import { Laanesoeknad } from '../../_models/laanesoeknad';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-loan-application',
@@ -31,14 +32,14 @@ export class LoanApplicationComponent {
         laanetakere: [this.laanetaker1, this.laanetaker2],
     };
 
-    constructor(private mainService: MainService) {}
+    constructor(private mainService: MainService, private router: Router) {}
 
     sendLoanApplication(): any {
-        // this.mainService
-        //     .postApplication(this.laanesoeknad)
-        //     .subscribe((response) => {
-        //         console.log(response);
-        //     });
-      console.log(this.laanesoeknad);
+        this.mainService
+            .postApplication(this.laanesoeknad)
+            .subscribe((response) => {
+                console.log(response);
+                this.router.navigateByUrl('/status');
+            });
     }
 }

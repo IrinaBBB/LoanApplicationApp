@@ -1,0 +1,23 @@
+### POST
+POST localhost:8095/v1/application
+content-type: application/json
+
+{
+  "lanetakere": [
+    {
+      "fodselsnummer": "01056000079",
+      "navn": "Kari Nordmann",
+      "fodselsdato": "1960-05-01"
+    },
+    {
+      "fodselsnummer": "01056000301",
+      "navn": "Ola Nordmann",
+      "fodselsdato": "1960-05-01"
+    }
+  ],
+  "lanebelop": 2450000,
+  "behov": "Vi skal låne penger til........",
+  "lopetid": 300,
+  "avdragsfriPeriode": 12,
+  "type": "annuitet"
+}

@@ -14,7 +14,7 @@ export class MainService {
         model: Laanesoeknad
     ): Observable<Laanesoeknad | FeilMelding> {
         return this.http
-            .post<Laanesoeknad>('', model)
+            .post<Laanesoeknad>('http://localhost:8095/v1/application', model)
             .pipe((data: any) => {
                 return data;
             });

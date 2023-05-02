@@ -2,6 +2,7 @@ package com.irinabalkarova.loanapplicationapi.repository;
 
 import com.irinabalkarova.loanapplicationapi.exception.ConstraintViolationException;
 import com.irinabalkarova.loanapplicationapi.model.Laanesoeknad;
+import com.irinabalkarova.loanapplicationapi.model.Status;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,9 @@ public class LaanesoeknadRepository {
 
     public void save(Laanesoeknad laanesoeknad) throws ConstraintViolationException {
         laanesoeknad.setId(NEXT_ID);
+        laanesoeknad.setStatus(Status.motatt);
         if(this.laanesoeknader.containsValue(laanesoeknad)){
+            log.error("Database Error: could not create new loan application");
             throw new ConstraintViolationException();
         }
         this.laanesoeknader.put(NEXT_ID++, laanesoeknad);

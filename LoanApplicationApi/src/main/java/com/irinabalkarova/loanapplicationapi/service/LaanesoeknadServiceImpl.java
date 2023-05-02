@@ -23,6 +23,7 @@ public class LaanesoeknadServiceImpl implements LaanesoeknadService {
         try {
             this.repository.save(loanApplication);
         } catch (ConstraintViolationException e) {
+            log.error(e.getMessage());
             throw new IllegalArgumentException("This loan application has already been created");
         }
     }
