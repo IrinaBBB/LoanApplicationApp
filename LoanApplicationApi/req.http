@@ -5,9 +5,9 @@ content-type: application/json
 {
   "lanetakere": [
     {
-      "fodselsnummer": "01056000079",
+      "fodselsnummer": "0105600007",
       "navn": "Kari Nordmann",
-      "fodselsdato": "1960-05-01"
+      "fodselsdato": null
     },
     {
       "fodselsnummer": "01056000301",
@@ -15,7 +15,7 @@ content-type: application/json
       "fodselsdato": "1960-05-01"
     }
   ],
-  "lanebelop": 2450000,
+  "lanebelop": 23423432,
   "behov": "Vi skal låne penger til........",
   "lopetid": 300,
   "avdragsfriPeriode": 12,

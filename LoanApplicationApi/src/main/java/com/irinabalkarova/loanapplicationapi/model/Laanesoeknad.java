@@ -1,18 +1,35 @@
 package com.irinabalkarova.loanapplicationapi.model;
 
 import lombok.Data;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
 public class Laanesoeknad {
     private long id;
+
+    @Valid
     private List<Laanetaker> lanetakere;
 
+    @NotNull
     private double lanebelop;
+
+    @NotNull(message = "Behov beskrivelse mangler")
+    @NotEmpty
     private String behov;
+
+    @NotNull
     private int lopetid;
+
+    @NotNull
     private int avdragsfriPeriode;
+
+    @NotNull
     private Laanetype type;
+
     private Status status;
 
     @Override

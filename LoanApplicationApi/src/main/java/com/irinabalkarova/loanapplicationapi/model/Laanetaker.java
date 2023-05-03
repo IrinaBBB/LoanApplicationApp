@@ -4,23 +4,22 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
 public class Laanetaker {
 
-    @NotBlank
-    @Pattern(regexp = "^(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])(\\d{2})(\\d{5})$\n", message = "Feil format på " +
-            "fødselsnummer")
+    @NotNull
+//    @Pattern(regexp = "^(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])(\\d{2})(\\d{5})$\n", message = "Feil format på " +
+//            "fødselsnummer")
     private Long fodselsnummer;
 
     @NotBlank
     @Size(min = 2, max = 100)
     private String navn;
 
-    @NotNull
+    @NotNull(message = "Fødselsdato kan ikke være null")
     private LocalDate fodselsdato;
 
     @Override

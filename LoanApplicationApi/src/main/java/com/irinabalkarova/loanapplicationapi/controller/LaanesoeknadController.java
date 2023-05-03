@@ -9,11 +9,14 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @RestController
 @Log4j2
@@ -31,11 +34,25 @@ public class LaanesoeknadController {
 
     @PostMapping
     @ApiOperation(value = "Create a new loan application", response = ResponseEntity.class)
-    public ResponseEntity<ResponseResult<Laanesoeknad>> post(@RequestBody @Valid Laanesoeknad laanesoeknad){
+    public ResponseEntity post(@RequestBody @Valid Laanesoeknad laanesoeknad,
+                                                             BindingResult bindingResult) {
         log.info("Request from 4200 to create a new loan application: \n" + laanesoeknad.toString());
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(
+                            bindingResult.getAllErrors()
+                                    .stream()
+                                    .map(ObjectError::getDefaultMessage)
+                                    .collect(Collectors.toList())
+                    );
+        }
+
         try {
             this.loanApplicationService.add(laanesoeknad);
-            return new ResponseEntity<>(new ResponseResult<>(null, laanesoeknad), HttpStatus.OK);
+            return ResponseEntity
+                    .accepted()
+                    .body(new ResponseResult<>(null, laanesoeknad));
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
         }
@@ -43,7 +60,7 @@ public class LaanesoeknadController {
 
     @GetMapping(path = "/{id}")
     @ApiOperation(value = "Get a loan application's status by ID", response = ResponseEntity.class)
-    public ResponseEntity<ResponseResult<Status>> get(@PathVariable long id){
+    public ResponseEntity<ResponseResult<Status>> get(@PathVariable long id) {
         try {
             Status status = this.loanApplicationService.getStatusById(id);
             return new ResponseEntity<>(new ResponseResult<>(null, status), HttpStatus.OK);
