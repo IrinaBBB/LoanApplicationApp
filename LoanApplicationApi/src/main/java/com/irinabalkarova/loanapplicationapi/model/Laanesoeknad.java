@@ -1,11 +1,14 @@
 package com.irinabalkarova.loanapplicationapi.model;
 
+import lombok.Builder;
 import lombok.Data;
 import java.util.List;
+import java.util.UUID;
 
 @Data
+@Builder
 public class Laanesoeknad {
-    private long id;
+    private UUID id;
     private List<Laanetaker> lanetakere;
 
     private double lanebelop;

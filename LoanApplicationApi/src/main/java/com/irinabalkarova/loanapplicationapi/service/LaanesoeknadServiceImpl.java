@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 @Slf4j
 public class LaanesoeknadServiceImpl implements LaanesoeknadService {
@@ -30,10 +33,15 @@ public class LaanesoeknadServiceImpl implements LaanesoeknadService {
     }
 
     @Override
-    public Status getStatusById(long id) {
+    public Status getStatusById(UUID id) {
         Laanesoeknad loanApplication
-                = this.repository.findById(id).orElseThrow(
+                = this.repository.getLaanesoeknadById(id).orElseThrow(
                 () -> new IllegalArgumentException("Id not found"));
         return loanApplication.getStatus();
+    }
+
+    @Override
+    public List<Laanesoeknad> getAllLaanesoeknader() {
+        return repository.getAll();
     }
 }
