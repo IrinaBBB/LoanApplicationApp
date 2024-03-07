@@ -8,13 +8,13 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "Laanetaker")
+@Table(name = "laanetaker")
 public class LaanetakerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(mappedBy = "laanetakerEntities")
+    @ManyToMany(mappedBy = "lanetakere")
     private Set<LaanesoeknadEntity> laanesoeknadEntities = new HashSet<>();
 
     @Column(name = "foedselsnummer")

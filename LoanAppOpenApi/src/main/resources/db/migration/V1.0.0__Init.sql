@@ -1,17 +1,17 @@
 CREATE SCHEMA IF NOT EXISTS loan_app;
 
-CREATE TABLE IF NOT EXISTS loan_app.Laanesoeknad
+CREATE TABLE IF NOT EXISTS loan_app.laanesoeknad
 (
     id                INT AUTO_INCREMENT PRIMARY KEY,
     lanebelop         DOUBLE,
     behov             VARCHAR(255),
     lopetid           INT,
-    avdragsfriPeriode INT,
+    avdragsfri_periode INT,
     type              ENUM ('annuitet', 'serie'),
     status            ENUM ('motatt', 'ukjent', 'behandles', 'godkjent')
 );
 
-CREATE TABLE IF NOT EXISTS loan_app.Laanetaker
+CREATE TABLE IF NOT EXISTS loan_app.laanetaker
 (
     id             INT AUTO_INCREMENT PRIMARY KEY,
     foedselsnummer BIGINT,
@@ -20,22 +20,22 @@ CREATE TABLE IF NOT EXISTS loan_app.Laanetaker
 );
 
 
-CREATE TABLE IF NOT EXISTS loan_app.Laanesoeknad_Laanetaker
+CREATE TABLE IF NOT EXISTS loan_app.laanesoeknad_laanetaker
 (
     laanesoeknad_id INT,
     laanetaker_id   INT,
     PRIMARY KEY (laanesoeknad_id, laanetaker_id),
-    FOREIGN KEY (laanesoeknad_id) REFERENCES loan_app.Laanesoeknad (id),
-    FOREIGN KEY (laanetaker_id) REFERENCES loan_app.Laanetaker (id)
+    FOREIGN KEY (laanesoeknad_id) REFERENCES loan_app.laanesoeknad (id),
+    FOREIGN KEY (laanetaker_id) REFERENCES loan_app.laanetaker (id)
 );
 
-INSERT INTO loan_app.Laanesoeknad (lanebelop, behov, lopetid, avdragsfriPeriode, type, status)
+INSERT INTO loan_app.laanesoeknad (lanebelop, behov, lopetid, avdragsfri_periode, type, status)
 VALUES (100000, 'Boligkjøp', 10, 2, 'annuitet', 'godkjent'),
        (50000, 'Bilreparasjon', 5, 1, 'serie', 'behandles'),
        (150000, 'Oppussing', 15, 3, 'annuitet', 'motatt');
 
 -- Seed data for Laanetaker table
-INSERT INTO loan_app.Laanetaker (foedselsnummer, navn, foedselsdato)
+INSERT INTO loan_app.laanetaker (foedselsnummer, navn, foedselsdato)
 VALUES (12345678901, 'Ole Hansen', '1990-05-15'),
        (23456789012, 'Mette Olsen', '1985-10-20'),
        (34567890123, 'Lars Pedersen', '1992-03-25'),
@@ -45,7 +45,7 @@ VALUES (12345678901, 'Ole Hansen', '1990-05-15'),
 
 
 -- Seed data for the junction table
-INSERT INTO loan_app.Laanesoeknad_Laanetaker (laanesoeknad_id, laanetaker_id)
+INSERT INTO loan_app.laanesoeknad_laanetaker (laanesoeknad_id, laanetaker_id)
 VALUES (1, 1), -- Ole Hansen applies for Laanesoeknad 1
        (1, 2), -- Mette Olsen applies for Laanesoeknad 1
        (2, 3), -- Lars Pedersen applies for Laanesoeknad 2

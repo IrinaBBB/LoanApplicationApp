@@ -56,15 +56,14 @@ paths:
           in: path
           required: true
           schema:
-            type: string
-            format: int
+            type: integer
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Laanesoeknad'
+                type: string
         '400':
           description: Bad Request
           content: {}
@@ -72,6 +71,11 @@ components:
   schemas:
     Laanesoeknad:
       type: object
+      required:
+        - lanetakere
+        - lanebelop
+        - behov
+        - lopetid
       properties:
         id:
           type: string

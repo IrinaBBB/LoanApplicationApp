@@ -6,4 +6,5 @@ import ru.aurorahost.LoanAppOpenApi.entity.LaanetakerEntity;
 
 @Repository
 public interface LaanetakerRepository extends CrudRepository<LaanetakerEntity, Long> {
+    LaanetakerEntity findByFoedselsnummer(Long foedselsnummer);
 }

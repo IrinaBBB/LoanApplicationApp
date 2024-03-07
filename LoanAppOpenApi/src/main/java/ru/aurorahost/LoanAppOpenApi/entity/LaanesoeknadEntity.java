@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "Laanesoeknad")
+@Table(name = "laanesoeknad")
 public class LaanesoeknadEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,11 +15,11 @@ public class LaanesoeknadEntity {
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
-            name = "Laanesoeknad_Laanetaker",
+            name = "laanesoeknad_laanetaker",
             joinColumns = { @JoinColumn(name = "laanesoeknad_id") },
             inverseJoinColumns = { @JoinColumn(name = "laanetaker_id") }
     )
-    Set<LaanetakerEntity> laanetakerEntities = new HashSet<>();
+    Set<LaanetakerEntity> lanetakere = new HashSet<>();
 
     @Column(name = "lanebelop")
     private Double lanebelop;
@@ -95,16 +95,24 @@ public class LaanesoeknadEntity {
         this.status = status;
     }
 
+    public Set<LaanetakerEntity> getLanetakere() {
+        return lanetakere;
+    }
+
+    public void setLanetakere(Set<LaanetakerEntity> laanetakerEntities) {
+        this.lanetakere = laanetakerEntities;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LaanesoeknadEntity that = (LaanesoeknadEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(laanetakerEntities, that.laanetakerEntities) && Objects.equals(lanebelop, that.lanebelop) && Objects.equals(behov, that.behov) && Objects.equals(lopetid, that.lopetid) && Objects.equals(avdragsfriPeriode, that.avdragsfriPeriode) && Objects.equals(type, that.type) && Objects.equals(status, that.status);
+        return Objects.equals(id, that.id) && Objects.equals(lanetakere, that.lanetakere) && Objects.equals(lanebelop, that.lanebelop) && Objects.equals(behov, that.behov) && Objects.equals(lopetid, that.lopetid) && Objects.equals(avdragsfriPeriode, that.avdragsfriPeriode) && Objects.equals(type, that.type) && Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, laanetakerEntities, lanebelop, behov, lopetid, avdragsfriPeriode, type, status);
+        return Objects.hash(id, lanetakere, lanebelop, behov, lopetid, avdragsfriPeriode, type, status);
     }
 }
