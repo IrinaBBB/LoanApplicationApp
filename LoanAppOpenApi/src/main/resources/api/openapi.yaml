@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  title: Loan Application API
+  description: API for managing loan applications
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/v1
+paths:
+  /application:
+    post:
+      summary: Create a new loan application
+      operationId: createLoanApplication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Laanesoeknad'
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: Bad Request
+          content: {}
+    get:
+      summary: Get all the applications
+      operationId: getAllLoanApplications
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Laanesoeknad'
+        '400':
+          description: Bad Request
+          content: {}
+  /application/{id}:
+    get:
+      summary: Get a loan application's status by ID
+      operationId: getLoanApplicationStatus
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Laanesoeknad'
+        '400':
+          description: Bad Request
+          content: {}
+components:
+  schemas:
+    Laanesoeknad:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        lanetakere:
+          type: array
+          items:
+            $ref: '#/components/schemas/Laanetaker'
+        lanebelop:
+          type: number
+          format: double
+        behov:
+          type: string
+        lopetid:
+          type: integer
+        avdragsfriPeriode:
+          type: integer
+        type:
+          $ref: '#/components/schemas/Laanetype'
+        status:
+          $ref: '#/components/schemas/Status'
+    Laanetaker:
+      type: object
+      properties:
+        foedselsnummer:
+          type: integer
+          format: int64
+        navn:
+          type: string
+        foedselsdato:
+          type: string
+          format: date
+    Status:
+      type: string
+      enum:
+        - motatt
+        - ukjent
+        - behandles
+        - godkjent
+    Laanetype:
+      type: string
+      enum:
+        - annuitet
+        - serie
