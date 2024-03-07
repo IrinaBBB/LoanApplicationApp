@@ -1,16 +1,14 @@
 package ru.aurorahost.LoanAppOpenApi.controllers;
 
-import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.aurorahost.LoanAppOpenApi.LoanApi;
-import ru.aurorahost.LoanAppOpenApi.ShopOpenApi.model.Laanesoeknad;
+import ru.aurorahost.LoanAppOpenApi.model.Laanesoeknad;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -18,6 +16,8 @@ import static org.springframework.http.ResponseEntity.ok;
 public class LoanController implements LoanApi {
 
     private static final Logger log = LoggerFactory.getLogger(LoanController.class);
+
+    
 
     @Override
     public ResponseEntity<Void> createLoanApplication(Laanesoeknad laanesoeknad) throws Exception {

@@ -9,13 +9,13 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Laanetaker")
-public class Laanetaker {
+public class LaanetakerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(mappedBy = "laanetakers")
-    private Set<Laanesoeknad> laanesoeknads = new HashSet<>();
+    @ManyToMany(mappedBy = "laanetakerEntities")
+    private Set<LaanesoeknadEntity> laanesoeknadEntities = new HashSet<>();
 
     @Column(name = "foedselsnummer")
     private Long foedselsnummer;
@@ -62,12 +62,12 @@ public class Laanetaker {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Laanetaker that = (Laanetaker) o;
-        return Objects.equals(id, that.id) && Objects.equals(laanesoeknads, that.laanesoeknads) && Objects.equals(foedselsnummer, that.foedselsnummer) && Objects.equals(navn, that.navn) && Objects.equals(foedselsdato, that.foedselsdato);
+        LaanetakerEntity that = (LaanetakerEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(laanesoeknadEntities, that.laanesoeknadEntities) && Objects.equals(foedselsnummer, that.foedselsnummer) && Objects.equals(navn, that.navn) && Objects.equals(foedselsdato, that.foedselsdato);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, laanesoeknads, foedselsnummer, navn, foedselsdato);
+        return Objects.hash(id, laanesoeknadEntities, foedselsnummer, navn, foedselsdato);
     }
 }

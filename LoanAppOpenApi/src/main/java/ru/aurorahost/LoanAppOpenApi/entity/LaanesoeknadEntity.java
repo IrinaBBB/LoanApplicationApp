@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Laanesoeknad")
-public class Laanesoeknad {
+public class LaanesoeknadEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,7 +19,7 @@ public class Laanesoeknad {
             joinColumns = { @JoinColumn(name = "laanesoeknad_id") },
             inverseJoinColumns = { @JoinColumn(name = "laanetaker_id") }
     )
-    Set<Laanetaker> laanetakers = new HashSet<>();
+    Set<LaanetakerEntity> laanetakerEntities = new HashSet<>();
 
     @Column(name = "lanebelop")
     private Double lanebelop;
@@ -99,12 +99,12 @@ public class Laanesoeknad {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Laanesoeknad that = (Laanesoeknad) o;
-        return Objects.equals(id, that.id) && Objects.equals(laanetakers, that.laanetakers) && Objects.equals(lanebelop, that.lanebelop) && Objects.equals(behov, that.behov) && Objects.equals(lopetid, that.lopetid) && Objects.equals(avdragsfriPeriode, that.avdragsfriPeriode) && Objects.equals(type, that.type) && Objects.equals(status, that.status);
+        LaanesoeknadEntity that = (LaanesoeknadEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(laanetakerEntities, that.laanetakerEntities) && Objects.equals(lanebelop, that.lanebelop) && Objects.equals(behov, that.behov) && Objects.equals(lopetid, that.lopetid) && Objects.equals(avdragsfriPeriode, that.avdragsfriPeriode) && Objects.equals(type, that.type) && Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, laanetakers, lanebelop, behov, lopetid, avdragsfriPeriode, type, status);
+        return Objects.hash(id, laanetakerEntities, lanebelop, behov, lopetid, avdragsfriPeriode, type, status);
     }
 }
