@@ -20,18 +20,36 @@ public class LoanController implements LoanApi {
     private static final Logger log = LoggerFactory.getLogger(LoanController.class);
 
     @Override
-    public ResponseEntity<Void> createLoanApplication(@Valid Laanesoeknad laanesoeknad) throws Exception {
+    public ResponseEntity<Void> createLoanApplication(Laanesoeknad laanesoeknad) throws Exception {
         return LoanApi.super.createLoanApplication(laanesoeknad);
     }
 
     @Override
     public ResponseEntity<List<Laanesoeknad>> getAllLoanApplications() throws Exception {
-        log.info("Request for customer ID:!!!!!!!!!!!!!!!!!!!!!!");
+        log.info("!!!!!!!!!!!!!!!!!!!!!!");
         return ok(Collections.EMPTY_LIST);
     }
 
     @Override
-    public ResponseEntity<Laanesoeknad> getLoanApplicationStatus(UUID id) throws Exception {
+    public ResponseEntity<Laanesoeknad> getLoanApplicationStatus(Integer id) throws Exception {
+        log.info("Request for customer ID:!!!!!!!!!!!!!!!!!!!!!!");
         return ok(new Laanesoeknad());
     }
+
+    //    @Override
+//    public ResponseEntity<Void> createLoanApplication(@Valid Laanesoeknad laanesoeknad) throws Exception {
+//        return LoanApi.super.createLoanApplication(laanesoeknad);
+//    }
+//
+//    @Override
+//    public ResponseEntity<List<Laanesoeknad>> getAllLoanApplications() throws Exception {
+//        log.info("!!!!!!!!!!!!!!!!!!!!!!");
+//        return ok(Collections.EMPTY_LIST);
+//    }
+//
+//    @Override
+//    public ResponseEntity<Laanesoeknad> getLoanApplicationStatus(Integer id) throws Exception {
+//        log.info("Request for customer ID:!!!!!!!!!!!!!!!!!!!!!!");
+//        return ok(new Laanesoeknad());
+//    }
 }

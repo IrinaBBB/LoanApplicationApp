@@ -57,7 +57,7 @@ paths:
           required: true
           schema:
             type: string
-            format: uuid
+            format: int
       responses:
         '200':
           description: OK
@@ -75,7 +75,7 @@ components:
       properties:
         id:
           type: string
-          format: uuid
+          format: int
         lanetakere:
           type: array
           items:
