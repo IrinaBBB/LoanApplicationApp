@@ -5,9 +5,14 @@ info:
   version: 1.0.0
 servers:
   - url: http://localhost:8080/v1
+tags:
+  - name: loan
+    description: Api Methods for creating loans and checking its statuses
 paths:
   /application:
     post:
+      tags:
+        - loan
       summary: Create a new loan application
       operationId: createLoanApplication
       requestBody:
@@ -24,6 +29,8 @@ paths:
           description: Bad Request
           content: {}
     get:
+      tags:
+        - loan
       summary: Get all the applications
       operationId: getAllLoanApplications
       responses:
@@ -40,6 +47,8 @@ paths:
           content: {}
   /application/{id}:
     get:
+      tags:
+        - loan
       summary: Get a loan application's status by ID
       operationId: getLoanApplicationStatus
       parameters:
