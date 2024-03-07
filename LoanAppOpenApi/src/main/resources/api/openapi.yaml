@@ -9,7 +9,7 @@ tags:
   - name: loan
     description: Api Methods for creating loans and checking its statuses
 paths:
-  /application:
+  /api/v1/application:
     post:
       tags:
         - loan
@@ -45,7 +45,7 @@ paths:
         '400':
           description: Bad Request
           content: {}
-  /application/{id}:
+  /api/v1/application/{id}:
     get:
       tags:
         - loan
