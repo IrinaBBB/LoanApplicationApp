@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS loan_app.laanesoeknad
     behov             VARCHAR(255),
     lopetid           INT,
     avdragsfri_periode INT,
-    type              ENUM ('annuitet', 'serie'),
-    status            ENUM ('motatt', 'ukjent', 'behandles', 'godkjent')
+    type              ENUM ('ANNUITET', 'SERIE'),
+    status            ENUM ('MOTTATT', 'UKJENT', 'BEHANDLES', 'GODKJENT')
 );
 
 CREATE TABLE IF NOT EXISTS loan_app.laanetaker
@@ -30,9 +30,9 @@ CREATE TABLE IF NOT EXISTS loan_app.laanesoeknad_laanetaker
 );
 
 INSERT INTO loan_app.laanesoeknad (lanebelop, behov, lopetid, avdragsfri_periode, type, status)
-VALUES (100000, 'Boligkjøp', 10, 2, 'annuitet', 'godkjent'),
-       (50000, 'Bilreparasjon', 5, 1, 'serie', 'behandles'),
-       (150000, 'Oppussing', 15, 3, 'annuitet', 'motatt');
+VALUES (100000, 'Boligkjøp', 10, 2, 'ANNUITET', 'GODKJENT'),
+       (50000, 'Bilreparasjon', 5, 1, 'SERIE', 'BEHANDLES'),
+       (150000, 'Oppussing', 15, 3, 'ANNUITET', 'MOTTATT');
 
 -- Seed data for Laanetaker table
 INSERT INTO loan_app.laanetaker (foedselsnummer, navn, foedselsdato)

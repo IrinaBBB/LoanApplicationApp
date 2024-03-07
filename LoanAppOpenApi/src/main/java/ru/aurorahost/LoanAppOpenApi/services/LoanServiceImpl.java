@@ -52,7 +52,7 @@ public class LoanServiceImpl implements LoanService {
 
         if (laanesoeknadOptional.isPresent()) {
             LaanesoeknadEntity laanesoeknadEntity = laanesoeknadOptional.get();
-            return Optional.ofNullable(laanesoeknadEntity.getStatus());
+            return Optional.ofNullable(laanesoeknadEntity.getStatus().toString());
         } else {
             return Optional.empty();
         }

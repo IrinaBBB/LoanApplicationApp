@@ -33,11 +33,13 @@ public class LaanesoeknadEntity {
     @Column(name = "avdragsfriPeriode")
     private Integer avdragsfriPeriode;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private String type;
+    private LaanetypeEntity type;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status;
+    private StatusEntity status = StatusEntity.MOTTATT;
 
     public Long getId() {
         return id;
@@ -79,19 +81,19 @@ public class LaanesoeknadEntity {
         this.avdragsfriPeriode = avdragsfriPeriode;
     }
 
-    public String getType() {
+    public LaanetypeEntity getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(LaanetypeEntity type) {
         this.type = type;
     }
 
-    public String getStatus() {
+    public StatusEntity getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusEntity status) {
         this.status = status;
     }
 
