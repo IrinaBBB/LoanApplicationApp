@@ -1,5 +1,6 @@
 package ru.aurorahost.LoanAppOpenApi.services;
 
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import ru.aurorahost.LoanAppOpenApi.entity.LaanesoeknadEntity;

@@ -110,7 +110,7 @@ public class LaanesoeknadEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LaanesoeknadEntity that = (LaanesoeknadEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(lanetakere, that.lanetakere) && Objects.equals(lanebelop, that.lanebelop) && Objects.equals(behov, that.behov) && Objects.equals(lopetid, that.lopetid) && Objects.equals(avdragsfriPeriode, that.avdragsfriPeriode) && Objects.equals(type, that.type) && Objects.equals(status, that.status);
+        return Objects.equals(id, that.id) && Objects.equals(lanebelop, that.lanebelop) && Objects.equals(behov, that.behov) && Objects.equals(lopetid, that.lopetid) && Objects.equals(avdragsfriPeriode, that.avdragsfriPeriode) && type == that.type && status == that.status;
     }
 
     @Override

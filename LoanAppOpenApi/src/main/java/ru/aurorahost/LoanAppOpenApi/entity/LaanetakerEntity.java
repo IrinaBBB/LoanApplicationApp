@@ -58,12 +58,20 @@ public class LaanetakerEntity {
         this.foedselsdato = foedselsdato;
     }
 
+    public Set<LaanesoeknadEntity> getLaanesoeknadEntities() {
+        return laanesoeknadEntities;
+    }
+
+    public void setLaanesoeknadEntities(Set<LaanesoeknadEntity> laanesoeknadEntities) {
+        this.laanesoeknadEntities = laanesoeknadEntities;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LaanetakerEntity that = (LaanetakerEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(laanesoeknadEntities, that.laanesoeknadEntities) && Objects.equals(foedselsnummer, that.foedselsnummer) && Objects.equals(navn, that.navn) && Objects.equals(foedselsdato, that.foedselsdato);
+        return Objects.equals(id, that.id) && Objects.equals(foedselsnummer, that.foedselsnummer) && Objects.equals(navn, that.navn) && Objects.equals(foedselsdato, that.foedselsdato);
     }
 
     @Override
